@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { fetchCollection } from '@/_includes/fetchlotr';
 
+export const dynamic = 'force-dynamic'
 export async function generateStaticParams() {
   const movies = await fetchCollection('movie');
  
