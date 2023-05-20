@@ -2,6 +2,10 @@
 
 .main {
   padding: 128px 32px 64px;  
+
+  @media (max-width: 767px) {
+    padding: 128px 16px 64px;
+  }
 }
 
 .nav {
@@ -68,7 +72,7 @@
       background-color: rgb(60, 138, 255);
     }
     a {
-      width: 100%;
+      width: auto;
       padding: 16px;
       display: block;
       color: #1d1d1d;
@@ -77,6 +81,11 @@
       transition: all .3s ease;
       display: flex;
       align-items: center;
+      word-break: break-word;
+
+      @media (max-width: 767px) {
+        font-size: 14px;
+      }
     }
   }
 }
