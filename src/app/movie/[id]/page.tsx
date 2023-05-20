@@ -3,14 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { fetchCollection } from '@/_includes/fetchlotr';
 
-// export const dynamic = 'force-dynamic'
-// export async function generateStaticParams() {
-//   const movies = await fetchCollection('movie');
+export const dynamic = 'force-dynamic'
+export async function generateStaticParams() {
+  const movies = await fetchCollection('movie');
  
-//   return movies.docs.map((movie:{_id: string}) => ({
-//     id: movie._id,
-//   }));
-// }
+  return movies.docs.map((movie:{_id: string}) => ({
+    id: movie._id,
+  }));
+}
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params
