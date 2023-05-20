@@ -1,95 +1,65 @@
 import Image from 'next/image'
-import styles from './page.module.css'
+import Link from 'next/link'
+import styles from '@/styles/page.module.scss'
+import { fetchCollection } from '@/_includes/fetchlotr';
 
-export default function Home() {
+export default async function Home() {
+  const movieCollection = await fetchCollection('movie');
+  const charCollection = await fetchCollection('character');
+  const quoteCollection = await fetchCollection('quote');
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <nav className={styles.nav}>
+        <ul>
+          <li><a href="#movies">Movies</a></li>
+          <li><a href="#characters">Characters</a></li>
+          <li><a href="#quotes">Quotes</a></li>
+        </ul>
+      </nav>
+      <h1>Lord of the Rings API Collection</h1>
+      <section className={styles.scroll_container}>
+        <div id="movies" className={styles.scroll_anchor}></div>
+        <h2>Lord of the Rings: Movies</h2>
+        <ul className={styles.item_list}>
+          {movieCollection.docs.map((movie: {_id: string, name:string}, index:number) => (
+            <li key={movie._id}>
+              <Link href={`/movie/${movie._id}`}>
+                <Image src="/film.svg" width={24} height={24} alt="movie icon"/>
+                {movie.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className={styles.scroll_container}>
+        <div id="characters" className={styles.scroll_anchor}></div>
+        <h2>Lord of the Rings: Characters</h2>
+        <ul className={styles.item_list}>
+          {charCollection.docs.map((char: {_id: string, name:string}) => (
+            <li key={char._id}>
+              <Link href={`/character/${char._id}`}>
+                <Image src="/char.svg" width={24} height={24} alt="character icon"/>
+                {char.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className={styles.scroll_container}>
+        <div id="quotes" className={styles.scroll_anchor}></div>
+        <h2>Lord of the Rings: Quotes</h2>
+        <ul className={styles.item_list}>
+          {quoteCollection.docs.map((quote: {_id: string, dialog:string}) => (
+            <li key={quote._id}>
+              <Link href={`/quote/${quote._id}`}>
+                <Image src="/quote.svg" width={24} height={24} alt="quote icon"/>
+                &quot;{quote.dialog}&quot;
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   )
 }

@@ -1,8 +1,16 @@
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+First, visit: The LOTR API at https://the-one-api.dev/.
+If you haven't already sign up for an account and copy the api key listed in your account.
 
-First, run the development server:
+In the root folder create a `.env` file and add in the API Key like so, where `XXXXX` is your API Key 
+```
+NEXT_PUBLIC_API_KEY = 'XXXXX'
+```
+
+Next, run the development server:
 
 ```bash
 npm run dev
@@ -14,10 +22,6 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -27,8 +31,6 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Design
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For design notes and information please check the design.md file. Here we discuss implementation and design choices for this project.
