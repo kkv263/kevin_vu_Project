@@ -35,4 +35,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Design
 
-For design notes and information please check the design.md file. Here we discuss implementation and design choices for this project.
+For design notes and information please check the [design.md](https://github.com/kkv263/kevin_vu_Project/blob/main/design.md) file. Here we discuss implementation and design choices for this project.
