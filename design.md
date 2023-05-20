@@ -54,6 +54,7 @@ I used this tech stack since it's the stack I am most comfortable with and utili
 - In terms of accessibility (a11y) Buttons and Link's are natively accessible, and HTML is semantic and makes sense.
 - Normalize.css is used to make styling look consistent across browsers, something I always add to my projects.
 - Anything sensitive or private is added to an .env file.
+- Suspense React Component to show "Loading" until data is completely loaded.
 
 #### Homepage:
 Once you land on the homepage, you're met with information off the bat listing movies, characters, and quotes in that order. Each section is separated and every other item is slightly tinted to show separation of each item.

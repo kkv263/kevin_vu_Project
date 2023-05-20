@@ -1,6 +1,7 @@
 import styles from '@/styles/item.module.scss'
 import Link from 'next/link';
 import { fetchCollection } from '@/_includes/fetchlotr';
+import { Suspense } from 'react';
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params
@@ -9,14 +10,16 @@ export default async function Page({ params }: { params: { id: string } }) {
   const { docs:[character] } = await fetchCollection('character', dialog.character);
 
   return (
-    <section className={styles.container}>
-    <Link className={styles.item_back} href="/">Back To Homepage</Link>
-    <h1>{dialog.dialog}</h1>
-    <div>
-      <p><strong>From Movie: </strong><Link href={`/movie/${movie._id}`}>{movie.name}</Link></p>
-      <p><strong>Quote By Character: </strong> <Link href={`/character/${character._id}`}>{character.name}</Link></p>
-    </div>
-  </section>)
+    <Suspense fallback={<div>Loading...</div>}>
+      <section className={styles.container}>
+        <Link className={styles.item_back} href="/">Back To Homepage</Link>
+        <h1>&quot;{dialog.dialog}&quot;</h1>
+        <div>
+          <p><strong>From Movie: </strong><Link href={`/movie/${movie._id}`}>{movie.name}</Link></p>
+          <p><strong>Quote By Character: </strong> <Link href={`/character/${character._id}`}>{character.name}</Link></p>
+        </div>
+      </section>
+    </Suspense>)
   ;
 }
 
