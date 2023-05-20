@@ -1,6 +1,8 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+Live Link: https://kevin-vu-project-82ue.vercel.app/
+
 ## Getting Started
 First, visit: The LOTR API at https://the-one-api.dev/.
 If you haven't already sign up for an account and copy the api key listed in your account.
