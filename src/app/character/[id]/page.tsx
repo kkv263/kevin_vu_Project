@@ -3,15 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { fetchCollection } from '@/_includes/fetchlotr';
 
-export const dynamic = 'force-dynamic'
-export async function generateStaticParams() {
-  const characters = await fetchCollection('character')
-
-  return characters.docs.map((character:{_id: string}) => ({
-    id: character._id,
-  }));
-}
-
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params
   const { docs: [char] } = await fetchCollection('character', id)

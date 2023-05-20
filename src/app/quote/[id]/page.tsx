@@ -1,16 +1,6 @@
 import styles from '@/styles/item.module.scss'
-import Image from 'next/image';
 import Link from 'next/link';
 import { fetchCollection } from '@/_includes/fetchlotr';
-
-export const dynamic = 'force-dynamic'
-export async function generateStaticParams() {
-  const quotes = await fetchCollection('quote');
- 
-  return quotes.docs.map((quote: {_id: string}) => ({
-    id: quote._id,
-  }));
-}
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params
